@@ -1,0 +1,320 @@
+# 语言工具由 mise 管理；具体版本见 ../README.md。
+# 手动格式化：:format 或 qq；仅 TOML 显式关闭 auto-format，其余继承 Helix 内置定义。
+# 外部 formatter 按各自规则读取项目配置；sql-formatter 目前未显式传 --config。
+# 修改语言配置或工具版本后重启 hx，确保语言定义与子进程 PATH 一起更新。
+# @@...@@ 是安装期占位符，必须通过 sh ./install.sh 渲染后使用，不能直接复制本文件。
+# Vue 服务固定 2.1.10（独立模式）；Svelte 服务保留本机版本 0.16.14。
+# Shell 使用 Bash Language Server / shfmt；复杂 zsh 专用语法不保证支持。
+# SQL / GraphQL / XML / JSON5 本次补齐的是格式化，不宣称具备完整语义语言服务。
+
+# mise isolates npm tools; this language server requires the TypeScript 6 tsserver.
+[language-server.typescript-language-server.config]
+tsserver.path = "@@TYPESCRIPT_ROOT@@/node_modules/typescript/lib/tsserver.js"
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.gopls]
+command = "gopls"
+
+[language-server.lua-language-server]
+command = "lua-language-server"
+
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+[language-server.vscode-html-language-server]
+command = "vscode-html-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-css-language-server]
+command = "vscode-css-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+config = { json = { validate = { enable = true } } }
+
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+# 使用 xcrun 跟随当前选中的 Xcode，不绑定 Xcode-beta 的安装路径。
+[language-server.clangd]
+command = "xcrun"
+args = ["clangd"]
+
+[language-server.sourcekit-lsp]
+command = "xcrun"
+args = ["sourcekit-lsp"]
+
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["format", "-"] }
+auto-format = false
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "scss"
+language-servers = ["vscode-css-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "json5"
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "docker-compose"
+language-servers = ["yaml-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "graphql"
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server"]
+formatter = { command = "shfmt", args = [
+  "-i",
+  "2",
+  "-filename",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "python"
+language-servers = ["pyright", { name = "ruff", except-features = ["hover"] }]
+formatter = { command = "ruff", args = [
+  "format",
+  "--stdin-filename",
+  "%{buffer_name}",
+  "-",
+] }
+
+[[language]]
+name = "go"
+language-servers = ["gopls"]
+formatter = { command = "gofmt" }
+
+[[language]]
+name = "gomod"
+language-servers = ["gopls"]
+
+[[language]]
+name = "gowork"
+language-servers = ["gopls"]
+
+[[language]]
+name = "gotmpl"
+language-servers = ["gopls"]
+
+[[language]]
+name = "lua"
+language-servers = ["lua-language-server"]
+formatter = { command = "stylua", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+  "-",
+] }
+
+[[language]]
+name = "c"
+language-servers = ["clangd"]
+formatter = { command = "xcrun", args = [
+  "clang-format",
+  "--assume-filename",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+formatter = { command = "xcrun", args = [
+  "clang-format",
+  "--assume-filename",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "swift"
+language-servers = ["sourcekit-lsp"]
+formatter = { command = "xcrun", args = [
+  "swift-format",
+  "format",
+  "--assume-filename",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "xml"
+formatter = { command = "/usr/bin/xmllint", args = [
+  "--nonet",
+  "--encode",
+  "UTF-8",
+  "--format",
+  "-",
+] }
+
+[[language]]
+name = "sql"
+formatter = { command = "sql-formatter" }
+
+[language-server.svelteserver]
+command = "svelteserver"
+args = ["--stdio"]
+
+[language-server.astro-ls]
+command = "astro-ls"
+args = ["--stdio"]
+config = { typescript = { tsdk = "@@TYPESCRIPT_ROOT@@/node_modules/typescript/lib" } }
+
+[language-server.docker-langserver]
+command = "docker-langserver"
+args = ["--stdio"]
+
+# mise 的 npm 包相互隔离，Prettier 插件需要显式给出模块路径。
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver"]
+formatter = { command = "prettier", args = [
+  "--plugin",
+  "@@SVELTE_PLUGIN_ROOT@@/node_modules/prettier-plugin-svelte/plugin.js",
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "astro"
+language-servers = ["astro-ls"]
+formatter = { command = "prettier", args = [
+  "--plugin",
+  "@@ASTRO_PLUGIN_ROOT@@/node_modules/prettier-plugin-astro/dist/index.js",
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }
+
+[[language]]
+name = "dockerfile"
+language-servers = ["docker-langserver"]
+
+# Vue 3 的新版服务需要编辑器桥接；这里使用兼容 Helix 的独立服务模式。
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+config = { vue = { hybridMode = false }, typescript = { tsdk = "@@TYPESCRIPT_ROOT@@/node_modules/typescript/lib" } }
+
+[[language]]
+name = "vue"
+language-servers = ["vue-language-server"]
+formatter = { command = "prettier", args = [
+  "--stdin-filepath",
+  "%{buffer_name}",
+] }

@@ -1,0 +1,379 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // ---------------------------------------------------------------------------
+  // Window / Layout
+  // ---------------------------------------------------------------------------
+
+  "git": {
+    "diff_base": "head",
+  },
+  "agent_ui_font_family": "FiraMono Nerd Font Propo",
+  "agent_buffer_font_family": "LXGW WenKai Mono GB",
+  "agent_buffer_font_size": 17.0,
+  "agent_ui_font_size": 16.5,
+  "markdown_preview": {
+    "limit_content_width": false,
+  },
+  "language_models": {
+    "openai_compatible": {
+      "MIMO_TOKEN": {
+        "api_url": "https://token-plan-cn.xiaomimimo.com/v1",
+        "available_models": [
+          {
+            "name": "mimo-v2.6-pro",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+            },
+          },
+        ],
+      },
+    },
+  },
+  "hard_tabs": false,
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true,
+    "anthropic_retention": false,
+  },
+  "scroll_sensitivity": 10.0,
+  "fast_scroll_sensitivity": 4.0,
+  "which_key": {
+    "enabled": true,
+  },
+  "autoscroll_on_clicks": false,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "horizontal_scroll_margin": 0.0,
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "text_rendering_mode": "platform_default",
+  "unnecessary_code_fade": 0.0,
+  "cursor_shape": "bar",
+  "cursor_blink": true,
+  "use_system_path_prompts": true,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "proxy": "",
+  "preview_tabs": {
+    "enable_keep_preview_on_code_navigation": true,
+  },
+  "use_smartcase_search": false,
+  "search": {
+    "center_on_match": true,
+    "case_sensitive": false,
+    "whole_word": true,
+  },
+  "helix_mode": true,
+  "minimum_contrast_for_highlights": 48.0,
+
+  "cli_default_open_behavior": "new_window",
+  "bottom_dock_layout": "full",
+
+  "outline_panel": {
+    "dock": "right",
+  },
+
+  "collaboration_panel": {
+    "dock": "left",
+  },
+
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+  },
+
+  "project_panel": {
+    "folder_indicator": "icon",
+    "sort_order": "default",
+    "sort_mode": "files_first",
+    "diagnostic_badges": false,
+    "auto_reveal_entries": true,
+    "git_status": true,
+    "file_icons": true,
+    "default_width": 480.0,
+    "indent_size": 25.0,
+    "hide_root": true,
+    "auto_fold_dirs": false,
+    "dock": "left",
+    "entry_spacing": "standard",
+  },
+
+  "toolbar": {
+    "breadcrumbs": true,
+  },
+
+  // ---------------------------------------------------------------------------
+  // Theme / Fonts / UI
+  // ---------------------------------------------------------------------------
+
+  "theme": {
+    "mode": "light",
+    "light": "Gruvbox Light Soft",
+    "dark": "Carbonfox - opaque",
+  },
+
+  // "icon_theme": "Material Icon Theme",
+  // "icon_theme": "Colored Zed Icons Theme Dark",
+
+  "ui_font_family": ".SystemUIFont",
+  "ui_font_fallbacks": ["LXGW WenKai Mono GB", ".SystemUIFont"],
+  "ui_font_weight": 480.0,
+  "ui_font_size": 18.5,
+
+  "buffer_font_family": "FiraMono Nerd Font Propo",
+  // FiraMono Nerd Font Propo
+  "buffer_font_fallbacks": ["LXGW WenKai Mono GB", ".SystemUIFont"],
+  "buffer_font_size": 17.0,
+  "buffer_font_weight": 300.0,
+
+  // "buffer_font_family": ".ZedMono",
+  // "buffer_font_fallbacks": ["LXGW WenKai Mono GB"],
+  // "ui_font_fallbacks": ["LXGW WenKai Mono GB"],
+
+  "buffer_line_height": "comfortable",
+  // standard comfortable
+
+  // ---------------------------------------------------------------------------
+  // Editor Behavior
+  // ---------------------------------------------------------------------------
+
+  "base_keymap": "VSCode",
+  "vim_mode": false,
+  "tab_size": 2,
+  "use_auto_surround": true,
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 20,
+  "diff_view_style": "split",
+
+  "gutter": {
+    "line_numbers": true,
+    "folds": true,
+  },
+
+  "minimap": {
+    "show": "always",
+    "display_in": "all_editors",
+    "thumb_border": "full",
+    "thumb": "always",
+  },
+
+  "indent_guides": {
+    "line_width": 1,
+    "active_line_width": 2,
+
+    // "coloring": "fixed",
+    // "background_coloring": "indent_aware"
+  },
+
+  // ---------------------------------------------------------------------------
+  // Formatting / Code Actions
+  // ---------------------------------------------------------------------------
+
+  "formatter": "auto",
+
+  "format_on_save": "off",
+
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true,
+  },
+
+  "languages": {
+    "Vue.js": {
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+
+      // "format_on_save": "on"
+    },
+
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": [],
+
+      // "format_on_save": "on"
+    },
+
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": [],
+
+      // "format_on_save": "on"
+    },
+
+    "JSON": {},
+  },
+
+  // ---------------------------------------------------------------------------
+  // Inlay Hints
+  // ---------------------------------------------------------------------------
+
+  "inlay_hints": {
+    "enabled": true,
+    "show_value_hints": true,
+    "show_type_hints": false,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+    "toggle_on_modifiers_press": {
+      "control": false,
+      "alt": false,
+      "shift": false,
+      "platform": false,
+      "function": false,
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // Diagnostics / LSP
+  // ---------------------------------------------------------------------------
+
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "lsp_pull_diagnostics": {
+      "enabled": true,
+      "debounce_ms": 50,
+    },
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null,
+    },
+  },
+
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "workingDirectory": {
+          "mode": "auto",
+        },
+      },
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // AI / Agent
+  // ---------------------------------------------------------------------------
+
+  "disable_ai": false,
+
+  // "inline_completion_provider": "zed",
+
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+  },
+
+  "show_edit_predictions": true,
+
+  "agent": {
+    "sidebar_side": "right",
+    "default_profile": "ask",
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {},
+    },
+    "use_modifier_to_send": true,
+    "play_sound_when_agent_done": "always",
+
+    "default_model": {
+      "enable_thinking": false,
+      "provider": "MIMO_TOKEN",
+      "model": "mimo-v2.6-pro",
+    },
+    "inline_assistant_model": {
+      "provider": "MIMO_TOKEN",
+      "model": "mimo-v2.6-pro",
+    },
+    "commit_message_instructions": "使用 Conventional Commits 格式：<type>(<scope>): <description>。使用中文。标题不超过 50 个字符。",
+    "commit_message_model": {
+      "provider": "MIMO_TOKEN",
+      "model": "mimo-v2.6-pro",
+    },
+    "thread_summary_model": {
+      "provider": "MIMO_TOKEN",
+      "model": "mimo-v2.6-pro",
+    },
+  },
+
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "opencode": {
+      "type": "registry",
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // File Types / Extensions
+  // ---------------------------------------------------------------------------
+
+  "auto_update_extensions": {
+    "vue": false,
+  },
+
+  "file_types": {
+    "Vue.js": ["**/*.uvue", "**/*.vue"],
+    "TypeScript": ["**/*.uts"],
+  },
+
+  "file_scan_inclusions": ["**/.env", "**/.env*"],
+
+  // ---------------------------------------------------------------------------
+  // Terminal
+  // ---------------------------------------------------------------------------
+
+  "terminal": {
+    "shell": {
+      "program": "/bin/zsh",
+    },
+    "font_size": 18.0,
+    "font_weight": 400.0,
+    "font_family": "FiraMono Nerd Font",
+    "toolbar": {
+      "breadcrumbs": true,
+    },
+    "flexible": false,
+    "default_height": 600,
+  },
+  "context_servers": {
+    "browseros": {
+      "url": "http://127.0.0.1:9200/mcp",
+      "enabled": true,
+    },
+    "browseros-neo": {
+      "url": "http://127.0.0.1:9010/mcp",
+      "source": "custom",
+      "enabled": true,
+    },
+  },
+}

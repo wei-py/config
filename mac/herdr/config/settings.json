@@ -1,0 +1,10 @@
+{
+  "zoom": 1.2,
+  "sounds": {
+    "enabled": true
+  },
+  "font": "FiraCode Nerd Font Mono",
+  "font_size": 16,
+  "ui_font": "LXGW WenKai",
+  "minimum_contrast": 1
+}

@@ -1,0 +1,74 @@
+# 主题配置
+theme = "gruvbox_dark_hard"
+
+# 基础编辑器配置
+[editor]
+line-number = "relative"    # 相对行号
+cursorline = true           # 高亮当前行
+auto-save = false
+bufferline = "multiple"     # 显示多个缓冲区
+color-modes = true          # 不同模式使用不同颜色
+default-yank-register = "+" # 默认使用系统剪贴板 (对应 vim.useSystemClipboard)
+mouse = false
+scrolloff = 50
+smart-tab.enable = true     # 启用智能 tab
+# gw 跳转标签按此字符顺序生成（含逗号和分号）
+jump-label-alphabet = "hklyuiopnm,qwertzxcvbasdgjf;"
+
+
+[editor.cursor-shape]
+insert = "bar"       # 插入模式使用竖线光标
+normal = "block"     # 正常模式使用块状光标
+select = "underline"
+
+# 搜索配置 (对应 vim.hlsearch 和 vim.incsearch)
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.file-picker]
+hidden = false
+ignore = false
+git-ignore = false
+git-global = false
+git-exclude = false
+
+# 缩进配置
+[editor.indent-guides]
+render = true
+character = "│"
+
+# 默认 yank 寄存器已在上方设为 "+"；macOS 的系统剪贴板仍需 pbcopy/pbpaste 可用。
+
+# 按键映射
+[keys.normal]
+# H 映射到物理行首（不是第一个非空白字符）
+H = "goto_line_start"
+# L 映射到行尾 (对应 L -> $)
+L = "goto_line_end"
+
+# qq 格式化文档 (对应 editor.action.formatDocument)
+q = { q = ":format" }
+
+# rr 与默认 gw 一样触发单词跳转
+r = { r = "goto_word" }
+
+# 诊断导航 (对应 [e 和 ]e)
+"[" = { e = "goto_prev_diag" }
+"]" = { e = "goto_next_diag" }
+
+G = "goto_file_end"
+
+[keys.insert]
+# jk 退出插入模式 (对应 vim.insertModeKeyBindings)
+j = { k = "normal_mode" }
+"A-x" = "normal_mode"
+
+[keys.select]
+# 选择模式下的映射 (对应 vim.visualModeKeyBindingsNonRecursive)
+# H 映射到行首
+H = "goto_line_start"
+# L 映射到行尾
+L = "goto_line_end"
+# jk 退出选择模式
+j = { k = "normal_mode" }

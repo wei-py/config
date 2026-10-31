@@ -1,0 +1,21 @@
+id = "nvim-nightfox"
+name = "Nightfox"
+version = "0.10.6"
+schema_version = 1
+description = "🦊 A port of the Neovim Nightfox themes. Includes all variants as opaque and blurred version."
+repository = "https://github.com/cange/nightfox.zed"
+authors = ["cange"]
+themes = ["themes/nvim-nightfox.json"]
+icon_themes = []
+languages = []
+capabilities = []
+
+[lib]
+
+[grammars]
+
+[language_servers]
+
+[context_servers]
+
+[slash_commands]

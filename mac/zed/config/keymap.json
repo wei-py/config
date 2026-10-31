@@ -1,0 +1,157 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // ---------------------------------------------------------------------------
+  // Workspace
+  // ---------------------------------------------------------------------------
+
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // Pane / Tab Navigation
+  // ---------------------------------------------------------------------------
+
+  {
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // Vim
+  // ---------------------------------------------------------------------------
+
+  // {
+  //   "context": "Editor",
+  //   "bindings": {
+  //     "j k": ["workspace::SendKeystrokes", "escape"]
+  //   }
+  // },
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "H": "vim::StartOfLine",
+      "L": "vim::EndOfLine",
+      "q q": "editor::Format",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // Project Panel
+  // ---------------------------------------------------------------------------
+
+  {
+    "bindings": {
+      "cmd-e": "project_panel::ToggleFocus",
+      "alt-e": "project_panel::ToggleFocus",
+    },
+  },
+
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "n": "project_panel::NewFile",
+      "a": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "o": ["workspace::SendKeystrokes", "enter"],
+    },
+  },
+
+  {
+    "context": "",
+    "bindings": {
+      "cmd-k cmd-k": "project_panel::CollapseAllEntries",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "t t": "editor::FoldFunctionBodies",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "ctrl-enter": "assistant::InlineAssist",
+      "cmd-enter": "assistant::InlineAssist",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-enter": "assistant::InlineAssist",
+      "cmd-enter": "assistant::InlineAssist",
+    },
+  },
+
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-x ctrl-a": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "s s": "assistant::InlineAssist",
+    },
+  },
+
+  // Helix 普通模式：rr 与默认 gw 一样触发单词跳转
+  {
+    "context": "Editor && vim_mode == helix_normal && !menu",
+    "bindings": {
+      "r r": "vim::HelixJumpToWord",
+      "G": "vim::EndOfDocument",
+    },
+  },
+]
